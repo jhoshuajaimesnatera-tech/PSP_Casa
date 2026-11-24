@@ -1,0 +1,39 @@
+/*
+Parte 2. Pipeline y control de errores (3,5 puntos)
+Implementa una clase PipelineConFiltroDoble que:
+
+Reciba por args dos cadenas: args[0] (un filtro de texto que debe contener la línea) 
+y args[1] (un texto que no debe contener la línea). (Si no se pasan 2 argumentos, 
+muestra un mensaje de error y termina con código 1.)
+
+Encadene mediante ProcessBuilder.startPipeline(...):
+
+Un proceso ejercicios.cuaderno0.Cuenta con límite "30".
+
+Un primer filtro ejercicios.cuaderno0.Filtra con args[0].
+
+Un segundo filtro (puedes crear una clase auxiliar FiltraExcluye) que deje pasar solo las líneas que no contengan args[1].
+
+Lea la salida final desde el último proceso de la tubería y la imprima por consola.
+
+Espere a que todos los procesos de la tubería terminen,
+muestre su PID y su código de salida, e indique si todos terminaron con código 0
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Parte 3. Ejecución concurrente de trabajadores y agregación segura (3,5 puntos)
+Implementa ProcesarLotesConAgregado que:
+
+Lance en paralelo (no uno tras otro) varios procesos ejercicios.cuaderno0.Trabajador 
+con los límites {500_000, 1_500_000, 2_500_000}.
+
+Redirija la salida estándar de cada trabajador a un archivo dentro de una carpeta salida_examen 
+(trab_500000.txt, etc.) y su salida de error a trab_500000.err.
+
+Espere a que terminen todos los procesos. Comprueba el código de salida de cada uno:
+
+Si algún trabajador devuelve un código distinto de 0, muestra un aviso indicando cuál falló y no sumes su resultado.
+
+Escriba el total acumulado de primos válidos en un archivo compartido 
+total_primos.txt utilizando RandomAccessFile + FileChannel + FileLock (con try ... finally para liberar el cerrojo), 
+de modo que si se ejecutaran varias instancias a la vez no se corrompa ni se pise el archivo.
